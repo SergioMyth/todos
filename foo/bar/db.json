@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "text": "Sjóða",
+      "day": "Ágúst 14:00",
+      "reminder": true
+    },
+    {
+      "id": "2",
+      "text": "Meeting with boss",
+      "day": "Tími er afstæður",
+      "reminder": true
+    },
+    {
+      "id": "3",
+      "text": "Fundur með Marel",
+      "day": "19.8.2021",
+      "reminder": false
+    }
+  ]
+}

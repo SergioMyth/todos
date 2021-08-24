@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="todo">
+  <h1>
+  TODO
+  </h1>
+  <form v-on:submit.prevent="add()">
+    <input type="text" v-model="name" />
+    <button type="submit">
+      add
+    </button>
+    <button type="button" v-if="remaining.length > 0" v-on:click="allDone()">All done</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos">
+      <label>
+        <input type="checkbox" v-model="todo.done" />
+        <span>{{ todo.name }}</span>
+      </label>
+      <button type="button" v-on:click="remove(todo)">
+        &times;
+      </button>
+    </li>
+  </ul>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+       new Vue({
+  el: '#todo',
+  data: {
+    name: null,
+    todos: []
+  },
+  methods: {
+    add: function () {
+    	if (this.name === null) { return; }
+    	this.todos.push({ name: this.name, done: false });
+    	this.name = null;
+    },
+    remove: function (todo) {
+    	this.todos.splice(this.todos.indexOf(todo), 1);
+    },
+    allDone: function () {
+    	for (var i in this.todos) { this.todos[i].done = true; }
+    }
+  },
+  computed: {
+    remaining: function () {
+    	return this.todos.filter(function (todo) { return !todo.done; });
+    }
+  }
+});
+    </script>
+    
+</body>
+
+</html>
